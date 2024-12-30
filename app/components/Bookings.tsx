@@ -7,10 +7,10 @@ export default async function Bookings() {
   const bookings = await prisma.booking.findMany();
   return (
     <main>
-      <ul className='test__bookings'>
+      <ul className="test__bookings grid grid-cols-4 gap-4 mb-8">
         {bookings.map((booking) => (
-          <li key={booking.id}>
-            <h1 className='text-bold'>{booking.user}</h1>
+          <li key={booking.id} className="p-2 bg-slate-100">
+            <h1 className="font-bold">{booking.user}</h1>
             <p>{booking.subject}</p>
           </li>
         ))}
