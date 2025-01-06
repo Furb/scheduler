@@ -1,5 +1,4 @@
 import prisma from "@/lib/db";
-
 import React from "react";
 import Bookingform from "./Bookingform";
 
