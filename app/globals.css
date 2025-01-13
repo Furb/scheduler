@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --custom-color-1: orange;
+  --custom-color-2: purple;
+  --custom-color-3: turquoise;
+}
+
+.fc-daygrid-dot-event {
+  padding: 2px 8px;
+}

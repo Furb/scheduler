@@ -5,6 +5,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interActionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
+import events from "@/lib/events";
 
 export default function Calendar() {
   return (
@@ -31,19 +32,10 @@ export default function Calendar() {
       slotMinTime={"06:00"}
       slotMaxTime={"23:45"}
       slotDuration="00:30:00"
-      events={[
-        {
-          title: "Sofie",
-          start: "2025-01-10T14:00:00",
-          end: "2025-01-10T16:00:00",
-          extendedProps: {
-            roomId: "Room B",
-          },
-        },
-      ]}
+      events={events}
       eventContent={(arg) => {
         // Destructure extendedProps inside the callback
-        const { user, roomId } = arg.event.extendedProps;
+        const { message, roomId } = arg.event.extendedProps;
         const startTime = arg.event.start!.toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",

@@ -8,7 +8,7 @@ export default async function Bookings() {
     <main>
       <ul className="test__bookings grid grid-cols-4 gap-4 mb-8">
         {bookings.map((booking) => (
-          <li key={booking.id} className="p-2 bg-slate-100">
+          <li key={booking.id}>
             <h1 className="font-bold">{booking.user}</h1>
             <p>{booking.subject}</p>
           </li>
