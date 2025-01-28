@@ -3,11 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --custom-color-1: orange;
-  --custom-color-2: purple;
-  --custom-color-3: turquoise;
+  --color-main: #f9a51a;
+  --color-second: #f16522;
+  --color-third: #ec4b3c;
 }
 
 .fc-daygrid-dot-event {
   padding: 2px 8px;
+}
+
+.custom-day-cell:hover,
+.fc-daygrid-day-frame:hover {
+  background-color: #f0f8ff;
+  cursor: pointer;
 }

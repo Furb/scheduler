@@ -1,13 +1,23 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interActionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import events from "@/lib/events";
+import { getBookings } from "@/actions/actions";
+import { useState } from "react";
 
 export default function Calendar() {
+  const handleDateClick = (info: any) => {
+    const clickedDate = info.date.toLocaleDateString("en-GB", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+
+    alert(`You clicked on ${clickedDate}`);
+  };
   return (
     <FullCalendar
       plugins={[interActionPlugin, dayGridPlugin, timeGridPlugin]}
@@ -32,9 +42,8 @@ export default function Calendar() {
       slotMinTime={"06:00"}
       slotMaxTime={"23:45"}
       slotDuration="00:30:00"
-      events={events}
+      events={getBookings}
       eventContent={(arg) => {
-        // Destructure extendedProps inside the callback
         const { message, roomId } = arg.event.extendedProps;
         const startTime = arg.event.start!.toLocaleTimeString([], {
           hour: "2-digit",
@@ -55,9 +64,7 @@ export default function Calendar() {
         );
       }}
       //dateClick={}
-      dateClick={(info) => {
-        console.log("Clicked on date:", info.dateStr);
-      }}
+      dateClick={handleDateClick}
     />
   );
 }

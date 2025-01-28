@@ -1,5 +1,6 @@
 "use server";
 import prisma from "@/lib/db";
+import { revalidatePath } from "next/cache";
 
 export async function createBooking(formData: FormData) {
   const startTime = formData.get("startTime") as string;
@@ -15,11 +16,26 @@ export async function createBooking(formData: FormData) {
   }
   await prisma.booking.create({
     data: {
-      user: formData.get("user") as string,
+      title: formData.get("user") as string,
       subject: formData.get("subject") as string,
       roomId: formData.get("roomId") as string,
       startTime: parsedStartTime,
       endTime: parsedEndTime,
     },
   });
+  revalidatePath("/");
+}
+
+export async function getBookings() {
+  const bookings = await prisma.booking.findMany();
+  return bookings.map((booking) => ({
+    id: booking.id,
+    title: booking.title,
+    start: booking.startTime.toISOString(),
+    end: booking.endTime.toISOString(),
+    extendedProps: {
+      user: booking.subject,
+      roomId: booking.roomId,
+    },
+  }));
 }

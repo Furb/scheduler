@@ -12,12 +12,12 @@ datasource db {
 
 model Booking {
   id        String      @id @default(cuid())
-  user      String
-  subject   String
+  title     String
+  subject   String?
   roomId    String
   startTime DateTime
   endTime   DateTime
   createdAt DateTime    @default(now())
-  published Boolean?     @default(false)
   updatedAt DateTime    @updatedAt
 }
+
