@@ -14,9 +14,8 @@ export default async function Bookings() {
           </li>
         ))}
       </ul>
-      <dialog>
-        <Bookingform />
-      </dialog>
+
+      <dialog></dialog>
     </main>
   );
 }

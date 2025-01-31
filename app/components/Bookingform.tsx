@@ -1,7 +1,7 @@
 "use client";
 import { createBooking } from "@/actions/actions";
 
-function Bookingform() {
+function Bookingform({ selectedDate }: { selectedDate: string | null }) {
   return (
     <form
       action={createBooking}
@@ -64,6 +64,7 @@ function Bookingform() {
             name="startTime"
             className="w-full"
             required
+            defaultValue={selectedDate ? `${selectedDate}T09:00` : ""}
           />
         </div>
 
@@ -75,6 +76,7 @@ function Bookingform() {
             name="endTime"
             className="w-full"
             required
+            defaultValue={selectedDate ? `${selectedDate}T09:00` : ""}
           />
         </div>
       </fieldset>
