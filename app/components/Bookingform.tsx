@@ -5,23 +5,18 @@ function Bookingform({ selectedDate }: { selectedDate: string | null }) {
   return (
     <form
       action={createBooking}
-      className="flex flex-col space-y-4 p-4 border rounded shadow-md max-w-md mx-auto"
+      className="flex flex-col p-4 max-w-md mx-auto relative text-gray-600"
     >
       <input
         type="text"
         name="user"
-        placeholder="Who is booking?"
-        className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Reserved for..."
+        className="placeholder:text-gray-600 text-sm font-semibold pt-3 pb-2 mb-12 block w-full px-0 mt-0 bg-transparent border-b-2 appearance-none focus:outline-none focus:ring-0 border-gray-200 focus:border-[var(--color-main)]"
       />
-      <textarea
-        name="subject"
-        rows={5}
-        placeholder="Subject"
-        className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-      <fieldset className="flex space-y-2 gap-2">
-        <legend>Select Room:</legend>
-        <label htmlFor="room1">
+
+      <fieldset className="flex space-y-2 gap-2 mb-12">
+        <legend className="text-sm font-semibold">Select Room:</legend>
+        <label htmlFor="room1" className="text-sm">
           <input
             type="radio"
             id="room1"
@@ -30,10 +25,10 @@ function Bookingform({ selectedDate }: { selectedDate: string | null }) {
             className="mr-1"
             required
           />
-          Room 1
+          Small Room
         </label>
         <br />
-        <label htmlFor="room2">
+        <label htmlFor="room2" className="text-sm">
           <input
             type="radio"
             id="room2"
@@ -41,10 +36,10 @@ function Bookingform({ selectedDate }: { selectedDate: string | null }) {
             value="room2"
             className="mr-1"
           />
-          Room 2
+          Big Room
         </label>
         <br />
-        <label htmlFor="room3">
+        <label htmlFor="room3" className="text-sm">
           <input
             type="radio"
             id="room3"
@@ -52,12 +47,14 @@ function Bookingform({ selectedDate }: { selectedDate: string | null }) {
             value="room3"
             className="mr-1"
           />
-          Room 3
+          Cold Room
         </label>
       </fieldset>
-      <fieldset className="flex justify-between gap-8">
-        <div className="w-1/2">
-          <label htmlFor="starttime">Start Time:</label>
+      <fieldset className="flex justify-between gap-8 mb-12 text-sm">
+        <div className="w-1/2 border-b-2 appearance-none focus:outline-0 focus:ring-0 border-gray-200 focus:border-[var(--color-main)] ">
+          <label htmlFor="starttime" className="text-sm font-semibold">
+            Start
+          </label>
           <input
             type="datetime-local"
             id="starttime"
@@ -68,8 +65,10 @@ function Bookingform({ selectedDate }: { selectedDate: string | null }) {
           />
         </div>
 
-        <div className="w-1/2">
-          <label htmlFor="endtime">End Time:</label>
+        <div className="w-1/2 border-b-2 appearance-none focus:outline-none focus:ring-0 border-gray-200 focus:border-[var(--color-main)]">
+          <label htmlFor="endtime" className="text-sm font-semibold">
+            End
+          </label>
           <input
             type="datetime-local"
             id="endtime"
@@ -83,7 +82,7 @@ function Bookingform({ selectedDate }: { selectedDate: string | null }) {
 
       <button
         type="submit"
-        className="w-full py-3 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full py-3 text-white bg-[var(--color-main)] rounded hover:bg-[var(--color-second)]"
       >
         Confirm Booking
       </button>

@@ -45,17 +45,22 @@ export default function Calendar() {
         events={getBookings}
         eventContent={(arg) => {
           const { message, roomId } = arg.event.extendedProps;
-          const startTime = arg.event.start!.toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false,
-          });
 
-          const endTime = arg.event.end!.toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false,
-          });
+          const startTime = arg.event.start
+            ? arg.event.start.toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+              })
+            : "N/A";
+
+          const endTime = arg.event.end
+            ? arg.event.end.toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+              })
+            : "N/A";
 
           return (
             <div>
@@ -69,9 +74,14 @@ export default function Calendar() {
 
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col">
             <Bookingform selectedDate={selectedDate} />
-            <button onClick={() => setShowModal(false)}>Close</button>
+            <button
+              className="text-center tracking-wide font-extralight text-sm text-[var(--main-color)] m-3"
+              onClick={() => setShowModal(false)}
+            >
+              Close
+            </button>
           </div>
         </div>
       )}
